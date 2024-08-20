@@ -1,0 +1,29 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'обязательно'
+      mark: '*'
+    error_notification:
+      default_message: "Проверьте введенные данные:"
+    labels:
+      defaults:
+        сategory: Категория
+        title: Заголовок
+        description: Описание
+        image: Изображение
+  activerecord:
+    attributes:
+        bulletin:
+          title: Заголовок
+          description: Описание
+          image: Изображение
+          category: Категория
+          state/under_moderation: На модерации
+          state/rejected: Возвращено
+          state/draft: Черновик
+          state/published: Опубликовано
+          state/archived: В архиве
+        category:
+          name: Название

@@ -1,0 +1,12 @@
+ru:
+  navbar:
+    main_page: Главная
+    admin_panel: Админка
+    sign_in: Войти с помощью GitHub
+    sign_out: Выйти
+  auth:
+    flash:
+      success: Успешно
+      error: Что-то пошло не так
+      not_logged_in: Прежде чем продолжить вам необходими войти в систему
+      not_admin: У вас нет прав для просмотра данной страницы

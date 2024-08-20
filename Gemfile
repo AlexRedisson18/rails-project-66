@@ -9,8 +9,12 @@ gem 'cssbundling-rails'
 gem 'faker'
 gem 'jbuilder'
 gem 'jsbundling-rails'
+gem 'octokit'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
+gem 'rails-i18n'
 gem 'redis', '>= 4.0.1'
 gem 'rubocop-rails', require: false
 gem 'sentry-rails'
@@ -30,6 +34,7 @@ end
 
 group :development do
   gem 'dotenv-rails'
+  gem 'i18n-debug'
   gem 'web-console'
 end
 
