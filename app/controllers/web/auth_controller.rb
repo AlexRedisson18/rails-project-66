@@ -24,9 +24,9 @@ module Web
     private
 
     def find_or_initialize_user(user_data)
-      email = user_data['info']['email'].downcase
-      nickname = user_data['info']['nickname']
-      token = user_data['credentials']['token']
+      email = user_data.dig(:info, :email).downcase
+      nickname = user_data.dig(:info, :nickname)
+      token = user_data.dig(:credentials, :token)
 
       user = User.find_or_initialize_by(email:)
       user.nickname = nickname
