@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_22_062742) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_22_115251) do
   create_table "repositories", force: :cascade do |t|
     t.string "name"
-    t.string "github_id", null: false
+    t.integer "github_id"
     t.string "full_name"
     t.string "language"
     t.string "clone_url"
