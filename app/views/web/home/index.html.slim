@@ -1,0 +1,14 @@
+.mb-4
+  h1
+.display-4.fw-bold.mb-0
+  = t('.hexlet_greetings')
+p.mb-4
+  = t('.hexlet_greetings_description')
+h2.fw-bold
+  = t('.project_name')
+p
+  = t('.project_description')
+
+= link_to t('.learn_more'),
+          'https://ru.hexlet.io/programs/rails/projects/66',
+          class: 'btn btn-primary btn-lg px-4 mt-3 fw-bold'

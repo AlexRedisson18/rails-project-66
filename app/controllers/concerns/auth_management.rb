@@ -21,12 +21,6 @@ module AuthManagement
   def authenticate_user!
     return if signed_in?
 
-    redirect_to root_path, alert: t('auth.flash.not_logged_in')
-  end
-
-  def authenticate_admin!
-    return if signed_in? && current_user.admin?
-
-    redirect_to root_path, alert: t('auth.flash.not_admin')
+    redirect_to root_path, alert: t('flash.auth.shoud_sign_in')
   end
 end

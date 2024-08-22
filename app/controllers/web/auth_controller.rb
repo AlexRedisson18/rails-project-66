@@ -8,9 +8,9 @@ module Web
 
       if user.save
         sign_in(user)
-        flash[:notice] = t('auth.flash.success')
+        flash[:notice] = t('flash.auth.sign_in.success')
       else
-        flash[:alert] = t('auth.flash.error')
+        flash[:alert] = t('flash.auth.sign_in.error')
       end
 
       redirect_to root_path
@@ -18,7 +18,7 @@ module Web
 
     def logout
       sign_out
-      redirect_to root_path, notice: t('auth.flash.success')
+      redirect_to root_path, notice: t('flash.auth.sign_out.success')
     end
 
     private

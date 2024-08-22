@@ -1,12 +1,35 @@
 ru:
-  navbar:
-    main_page: Главная
-    admin_panel: Админка
-    sign_in: Войти с помощью GitHub
-    sign_out: Выйти
-  auth:
-    flash:
-      success: Успешно
-      error: Что-то пошло не так
-      not_logged_in: Прежде чем продолжить вам необходими войти в систему
-      not_admin: У вас нет прав для просмотра данной страницы
+  flash:
+    repositories:
+      create:
+        success: Репозиторий добавлен
+        erros: Что-то пошло не так
+    auth:
+      sign_in:
+        success: Вы успешно вошли
+        error: Что-то пошло не так
+      sign_out:
+        success: Вы вышли из системы
+      shoud_sign_in: Вы должны залогиниться
+  layouts:
+    shared:
+      navbar:
+        main_page: Главная
+        repositories: Репозитории
+        sign_in: Войти с помощью GitHub
+        sign_out: Выйти
+  web:
+    home:
+      index:
+        hexlet_greetings: Привет от Хекслета!
+        hexlet_greetings_description: Практические курсы по программированию
+        project_name: Анализатор качества репозиториев
+        project_description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
+        learn_more: Узнать больше
+    repositories:
+      index:
+        add_new: Добавить
+        name: Имя
+        language: Язык
+        last_check_status: Статус последней проверки
+        not_checked_yet: Проверок еще не было

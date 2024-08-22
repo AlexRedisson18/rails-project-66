@@ -1,8 +1,9 @@
-.container.my-4
-  - if flash[:notice]
-    p.alert.alert-success role='alert'
+- if flash[:notice]
+  .container.my-2
+    p.alert.alert-info role='alert'
       = notice
 
-  - if flash[:alert]
+- if flash[:alert]
+  .container.my-2
     p.alert.alert-danger role='alert'
       = alert

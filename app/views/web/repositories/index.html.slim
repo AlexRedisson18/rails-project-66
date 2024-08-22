@@ -1,0 +1,18 @@
+= link_to t('.add_new'), new_repository_path, class: 'btn btn-primary'
+
+table.table.table-striped.table-hover.mt-4
+  thead
+    tr
+      th scope='col' = t('.name')
+      th scope='col' = t('.language')
+      th scope='col' = t('.last_check_status')
+
+  tbody
+    - @repositories.each do |repository|
+      tr
+        td
+          = link_to repository.name || '-', '#'
+        td
+          = repository.language || ''
+        td
+          = t('.not_checked_yet')

@@ -107,6 +107,8 @@ GEM
       dotenv (= 3.1.2)
       railties (>= 6.1)
     drb (2.2.1)
+    enumerize (2.8.1)
+      activesupport (>= 3.2)
     erubi (1.13.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
@@ -379,6 +381,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   dotenv-rails
+  enumerize
   faker
   i18n-debug
   jbuilder
