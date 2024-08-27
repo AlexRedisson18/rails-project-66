@@ -1,0 +1,21 @@
+= link_to t('.back_to_repository'), @check.repository, class: 'btn btn-primary mb-4'
+
+h1 = t('.title', check_id: @check.id)
+
+table.table
+  tbody
+    tr
+      td = t('.created_at')
+      td = l(@check.created_at)
+    tr
+      td = t('.status')
+      td = @check.aasm.human_state
+    tr
+      td = t('.check_passed?')
+      td = @check.passed?
+    tr
+      td = t('.comments_count')
+      td = 'TODO: ADD DATA HERE'
+    tr
+      td = t('.commit_id')
+      td = @check.commit_id

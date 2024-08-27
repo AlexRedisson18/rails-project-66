@@ -8,20 +8,28 @@ module Web
       @repositories = current_user.repositories
     end
 
+    def show
+      @repository = Repository.find(params[:id])
+      authorize @repository
+
+      @checks = @repository.checks
+    end
+
     def new
       @repository = current_user.repositories.build
       authorize @repository
 
-      @repositories = filtered_by_language_repos.map { |repo| [repo[:full_name], repo[:id]] }
+      @github_client = ApplicationContainer[:github_client].new(@repository, current_user)
+
+      @repositories = @github_client.filtered_by_languages_repos.map { |repo| [repo[:full_name], repo[:id]] }
     end
 
     def create
-      authorize Repository
-
       @repository = current_user.repositories.find_or_initialize_by(repository_params)
+      authorize @repository
 
       if @repository.save
-        RepositoryLoaderJob.perform_later(@repository.id, current_user.token)
+        RepositoryLoadInfoJob.perform_later(@repository.id)
 
         flash[:notice] = t('flash.repositories.create.success')
         redirect_to repositories_path

@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
-class RepositoryPolicy
-  attr_reader :user, :repository
-
-  def initialize(user, repository)
-    @user = user
-    @repository = repository
-  end
-
+class RepositoryPolicy < ApplicationPolicy
   def index?
     user
   end
@@ -21,6 +14,6 @@ class RepositoryPolicy
   end
 
   def show?
-    repository.user == user
+    record_owner?
   end
 end
