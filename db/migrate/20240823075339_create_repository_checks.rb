@@ -5,7 +5,7 @@ class CreateRepositoryChecks < ActiveRecord::Migration[7.1]
       t.string :aasm_state, null: false, default: 'created'
       t.string :commit_id
       t.boolean :passed, default: false
-      t.json :check_data, default: {}
+      t.json :linter_check_result, default: {}
 
       t.timestamps
     end

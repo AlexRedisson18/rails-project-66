@@ -15,7 +15,25 @@ table.table
       td = @check.passed?
     tr
       td = t('.comments_count')
-      td = 'TODO: ADD DATA HERE'
+      td = @check.linter_check_result['offenses_count']
     tr
       td = t('.commit_id')
       td = @check.commit_id
+
+table.table.table-hover.mb-5
+  thead
+    tr
+      th = t('.message')
+      th = t('.rule_id')
+      th = t('.line_and_column')
+  tbody
+    - if @check.linter_check_result['offenses_count']&.positive?
+      - @check.linter_check_result['files'].each do |filename, offenses|
+        tr
+          td (colspan = "4")
+            = github_file_link(@check, filename)
+        - offenses.each do |offense|
+          tr
+            td = offense['message']
+            td = offense['cop_name']
+            td = "#{offense['start_line']}:#{offense['start_column']}"

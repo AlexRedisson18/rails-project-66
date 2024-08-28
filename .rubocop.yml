@@ -1,18 +1,22 @@
 ---
 require:
   - rubocop-rails
+  - rubocop-performance
 
 AllCops:
-  DisplayCopNames: true
   Exclude:
     - "bin/**"
     - "db/schema.rb"
     - "db/migrate/**"
     - "vendor/**/*"
     - "node_modules/**/*"
+    # - "tmp/repositories/**/bin/**"
+    # - "tmp/repositories/**/db/**/*.rb"
   NewCops: enable
   TargetRailsVersion: 7
   TargetRubyVersion: 3.1.2
+  SuggestExtensions: false
+  DisplayCopNames: true
 
 Layout/LineLength:
   Enabled: false

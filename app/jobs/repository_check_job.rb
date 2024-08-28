@@ -7,6 +7,6 @@ class RepositoryCheckJob < ApplicationJob
     check = Repository::Check.find_by(id: check_id)
     return unless check
 
-    RepositoryCheckService.call(check)
+    RepositoryCheckService.new(check).call
   end
 end

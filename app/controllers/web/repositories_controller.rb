@@ -12,7 +12,7 @@ module Web
       @repository = Repository.find(params[:id])
       authorize @repository
 
-      @checks = @repository.checks
+      @checks = @repository.checks.order(created_at: :desc)
     end
 
     def new
@@ -50,7 +50,7 @@ module Web
     end
 
     def filtered_by_language_repos
-      client_repos.filter { |repo| Repository.language.values.include?(repo[:language]&.downcase) }
+      client_repos.filter { |repo| Repository.language.value?(repo[:language]&.downcase) }
     end
   end
 end

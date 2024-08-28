@@ -61,3 +61,6 @@ ru:
           check_passed?: Проверка пройдена?
           comments_count: Количество замечаний
           commit_id: ID коммита
+          message: Сообщение
+          rule_id: Идентификатор правила
+          line_and_column: Строка и символ

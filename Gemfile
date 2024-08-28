@@ -21,6 +21,7 @@ gem 'pundit'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
 gem 'rails-i18n'
 gem 'redis', '>= 4.0.1'
+gem 'rubocop-performance', require: false
 gem 'rubocop-rails'
 gem 'sentry-rails'
 gem 'sentry-ruby'

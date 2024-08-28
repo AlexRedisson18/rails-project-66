@@ -21,7 +21,7 @@ class Github::ClientStub
   end
 
   def filtered_by_languages_repos
-    all_repos.filter { |repo| Repository.language.values.include?(repo[:language]&.downcase) }
+    all_repos.filter { |repo| Repository.language.value?(repo[:language]&.downcase) }
   end
 
   def github_repository
