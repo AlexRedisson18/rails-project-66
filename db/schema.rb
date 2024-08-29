@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.1].define(version: 2024_08_23_075339) do
   create_table "repositories", force: :cascade do |t|
     t.string "name"
-    t.integer "github_id"
+    t.integer "github_id", null: false
     t.string "full_name"
     t.string "language"
     t.string "clone_url"

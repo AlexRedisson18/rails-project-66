@@ -2,7 +2,7 @@ class CreateRepositories < ActiveRecord::Migration[7.1]
   def change
     create_table :repositories do |t|
       t.string :name
-      t.string :github_id, null: false
+      t.integer :github_id, null: false
       t.string :full_name
       t.string :language
       t.string :clone_url
