@@ -25,8 +25,10 @@ module RailsProject66
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
     config.i18n.default_locale = :ru
     config.i18n.available_locales = %i[ru en]
-    routes.default_url_options = { host: ENV['BASE_URL'] }
+
+    routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
   end
 end

@@ -8,6 +8,13 @@ module Web
       @repositories = current_user.repositories
     end
 
+    def show
+      @repository = Repository.find(params[:id])
+      authorize @repository
+
+      @checks = @repository.checks.order(created_at: :desc)
+    end
+
     def new
       @repository = current_user.repositories.build
       authorize @repository
@@ -31,26 +38,10 @@ module Web
       end
     end
 
-    def show
-      @repository = Repository.find(params[:id])
-      authorize @repository
-
-      @checks = @repository.checks.order(created_at: :desc)
-    end
-
     private
 
     def repository_params
       params.require(:repository).permit(:github_id)
-    end
-
-    def client_repos
-      client = Octokit::Client.new(access_token: current_user.token, auto_paginate: true)
-      client.repos
-    end
-
-    def filtered_by_language_repos
-      client_repos.filter { |repo| Repository.language.value?(repo[:language]&.downcase) }
     end
   end
 end

@@ -4,6 +4,7 @@ class Linter::JavascriptService
   def initialize(check, tmp_dir_path)
     @check = check
     @tmp_dir_path = tmp_dir_path
+    @bash_runner = ApplicationContainer[:bash_runner]
   end
 
   def call
@@ -12,14 +13,11 @@ class Linter::JavascriptService
 
   private
 
-  def bash_command
-    "yarn run eslint #{@tmp_dir_path} -f json -c eslint.config.mjs"
-  end
-
   def run_linter
-    bash_output = BashRunner.run(bash_command).split("\n")[2..-2].join("\n")
+    bash_command = "yarn run eslint #{@tmp_dir_path} -f json -c eslint.config.mjs"
+    bash_output = @bash_runner.run(bash_command)
 
-    JSON.parse(bash_output)
+    bash_output.nil? ? {} : JSON.parse(bash_output.split("\n")[2..-2].join("\n"))
   end
 
   def update_linter_check_result(parsed_result)

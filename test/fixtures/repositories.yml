@@ -6,9 +6,18 @@
 #
 one:
   name: Repository1
-  github_id: 12345689
-  full_name: FullRepoName
+  github_id: 123_456_789
+  full_name: RailsRepoName
   language: ruby
-  clone_url: https://github.com/AlexRedisson18/rails-project-65
-  ssh_url: git@github.com:AlexRedisson18/rails-project-65.git
+  clone_url: https://github.com/AlexRedisson18/rails-project-50
+  ssh_url: git@github.com:AlexRedisson18/rails-project-50.git
+  user: one
+
+two:
+  name: Repository2
+  github_id: 123_456_780
+  full_name: JavascriptRepoName
+  language: javascript
+  clone_url: https://github.com/AlexRedisson18/javascript-project-60
+  ssh_url: git@github.com:AlexRedisson18/javascript-project-60.git
   user: one

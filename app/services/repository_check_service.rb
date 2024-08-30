@@ -6,6 +6,7 @@ class RepositoryCheckService
     @repository = @check.repository
     @github_client = ApplicationContainer[:github_client].new(@repository)
     @tmp_dir_path = Rails.root.join('tmp', 'repositories', @repository.id.to_s)
+    @bash_runner = ApplicationContainer[:bash_runner]
   end
 
   def call
@@ -30,7 +31,7 @@ class RepositoryCheckService
     prepare_directory
     bash_command = "git clone #{@repository.clone_url} #{@tmp_dir_path}"
 
-    BashRunner.run(bash_command)
+    @bash_runner.run(bash_command)
   end
 
   def prepare_directory

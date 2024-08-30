@@ -4,6 +4,18 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+created:
   aasm_state: created
+  repository: one
+
+check_running:
+  aasm_state: check_running
+  repository: one
+
+checked:
+  aasm_state: checked
+  repository: one
+
+failed:
+  aasm_state: failed
   repository: one

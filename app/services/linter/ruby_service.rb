@@ -4,6 +4,7 @@ class Linter::RubyService
   def initialize(check, tmp_dir_path)
     @check = check
     @tmp_dir_path = tmp_dir_path
+    @bash_runner = ApplicationContainer[:bash_runner]
   end
 
   def call
@@ -12,14 +13,11 @@ class Linter::RubyService
 
   private
 
-  def bash_command
-    "bundle exec rubocop #{@tmp_dir_path} --format json -c .rubocop.yml"
-  end
-
   def run_linter
-    bash_output = BashRunner.run(bash_command)
+    bash_command = "bundle exec rubocop #{@tmp_dir_path} --format json -c .rubocop.yml"
+    bash_output = @bash_runner.run(bash_command)
 
-    JSON.parse(bash_output)
+    bash_output.nil? ? {} : JSON.parse(bash_output)
   end
 
   def update_linter_check_result(parsed_result)
@@ -31,7 +29,7 @@ class Linter::RubyService
 
   def create_files_hash(parsed_result)
     result = { offenses_count: 0, files: {} }
-    offenses_count = parsed_result.dig('summary', 'offense_count')
+    offenses_count = parsed_result.dig('summary', 'offense_count') || 0
 
     return result if offenses_count.zero?
 

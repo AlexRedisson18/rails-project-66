@@ -20,9 +20,5 @@ class Repository::Check < ApplicationRecord
     event :mark_as_failed do
       transitions to: :failed
     end
-
-    event :rollback do
-      transitions from: :check_running, to: :created
-    end
   end
 end

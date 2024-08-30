@@ -10,6 +10,7 @@ module Web
 
       def create
         @repository = Repository.find(params[:repository_id])
+
         check = @repository.checks.create
         authorize check
 
