@@ -40,4 +40,53 @@ class Github::Client
   def last_commit_sha
     @client.commits(@repository.github_id).first[:sha]
   end
+
+  def current_repository_webhook
+    @client.hooks(@repository.github_id).find { |hook| hook[:config][:url] == webhook_api_checks_url }
+  end
+
+  def create_repository_webhook
+    return if current_repository_webhook
+
+    @client.create_hook(
+      @repository.full_name,
+      'web',
+      {
+        url: webhook_api_checks_url,
+        content_type: 'json',
+      },
+      {
+        events: ['push'],
+        active: true
+      }
+    )
+  end
+
+  private
+
+  def webhook_api_checks_url
+    Rails.application.routes.url_helpers.api_checks_url
+  end
 end
+
+
+# {:type=>"Repository",
+#  :id=>498735139,
+#  :name=>"web",
+#  :active=>true,
+#  :events=>["push"],
+#  :config=>
+#   {:content_type=>"json",
+#    :insecure_ssl=>"0",
+#    :url=>"https://e456-94-137-18-209.ngrok-free.app/api/checks"},
+#  :updated_at=>2024-08-29 10:54:33 UTC,
+#  :created_at=>2024-08-29 10:54:33 UTC,
+#  :url=>
+#   "https://api.github.com/repos/AlexRedisson18/rails-project-66/hooks/498735139",
+#  :test_url=>
+#   "https://api.github.com/repos/AlexRedisson18/rails-project-66/hooks/498735139/test",
+#  :ping_url=>
+#   "https://api.github.com/repos/AlexRedisson18/rails-project-66/hooks/498735139/pings",
+#  :deliveries_url=>
+#   "https://api.github.com/repos/AlexRedisson18/rails-project-66/hooks/498735139/deliveries",
+#  :last_response=>{:code=>200, :status=>"active", :message=>"OK"}}

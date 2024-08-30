@@ -16,4 +16,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do
+    resources :checks, only: %i[create]
+  end
 end

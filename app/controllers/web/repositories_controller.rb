@@ -8,13 +8,6 @@ module Web
       @repositories = current_user.repositories
     end
 
-    def show
-      @repository = Repository.find(params[:id])
-      authorize @repository
-
-      @checks = @repository.checks.order(created_at: :desc)
-    end
-
     def new
       @repository = current_user.repositories.build
       authorize @repository
@@ -36,6 +29,13 @@ module Web
       else
         render :new, status: :unprocessable_entity
       end
+    end
+
+    def show
+      @repository = Repository.find(params[:id])
+      authorize @repository
+
+      @checks = @repository.checks.order(created_at: :desc)
     end
 
     private

@@ -10,5 +10,6 @@ class RepositoryLoadInfoJob < ApplicationJob
 
     github_client = ApplicationContainer[:github_client].new(repository)
     github_client.update_repository!
+    github_client.create_repository_webhook
   end
 end

@@ -10,10 +10,10 @@ module Web
 
       def create
         @repository = Repository.find(params[:repository_id])
-        @check = @repository.checks.create
-        authorize @check
+        check = @repository.checks.create
+        authorize check
 
-        RepositoryCheckJob.perform_later(@check.id)
+        RepositoryCheckJob.perform_later(check.id)
 
         flash[:notice] = t('flash.repositories.checks.create.success')
         redirect_to @repository
