@@ -8,7 +8,7 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     @ruby_repository = repositories(:one)
     @js_repository = repositories(:two)
 
-    @check = repository_checks(:checked)
+    @check = repository_checks(:finished)
 
     sign_in(@user)
   end
@@ -28,7 +28,7 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     check = @ruby_repository.checks.last
 
-    assert { check.checked? }
+    assert { check.finished? }
     assert { check.passed }
   end
 
@@ -41,7 +41,7 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     check = @js_repository.checks.last
 
-    assert { check.checked? }
+    assert { check.finished? }
     assert { check.passed }
   end
 end

@@ -7,14 +7,14 @@ class Repository::Check < ApplicationRecord
 
   aasm do
     state :created, initial: true
-    state :check_running, :checked, :failed
+    state :check_running, :finished, :failed
 
     event :run_check do
-      transitions from: %i[created checked failed], to: :check_running
+      transitions from: %i[created finished failed], to: :check_running
     end
 
-    event :mark_as_checked do
-      transitions from: :check_running, to: :checked
+    event :mark_as_finished do
+      transitions from: :check_running, to: :finished
     end
 
     event :mark_as_failed do

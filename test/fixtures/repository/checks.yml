@@ -12,8 +12,8 @@ check_running:
   aasm_state: check_running
   repository: one
 
-checked:
-  aasm_state: checked
+finished:
+  aasm_state: finished
   repository: one
 
 failed:

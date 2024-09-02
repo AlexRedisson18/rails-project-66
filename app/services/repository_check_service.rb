@@ -20,7 +20,7 @@ class RepositoryCheckService
     call_linter
     remove_directory
 
-    @check.mark_as_checked!
+    @check.mark_as_finished!
   rescue StandardError
     @check.mark_as_failed!
   ensure

@@ -20,7 +20,7 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     perform_enqueued_jobs
 
-    assert { @repository.checks.last.checked? }
+    assert { @repository.checks.last.finished? }
     assert { @repository.checks.last.passed }
   end
 end

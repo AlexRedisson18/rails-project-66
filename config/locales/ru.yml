@@ -10,7 +10,7 @@ ru:
       repository/check:
         aasm_state/created: Не начата
         aasm_state/check_running: В процессе
-        aasm_state/checked: Завершена
+        aasm_state/finished: Завершена
         aasm_state/failed: Произошла ошибка
   flash:
     repositories:
