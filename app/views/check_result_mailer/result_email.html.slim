@@ -1,0 +1,7 @@
+h1
+  = t('.greeting', username: @user.email)
+p
+  - if @check.passed?
+    = t('.success')
+  - else
+    = t('.error', offenses_count: @check.linter_check_result['offenses_count'])

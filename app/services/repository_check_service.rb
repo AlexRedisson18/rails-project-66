@@ -23,6 +23,8 @@ class RepositoryCheckService
     @check.mark_as_checked!
   rescue StandardError
     @check.mark_as_failed!
+  ensure
+    CheckResultMailer.with(user: @repository.user, repository: @repository, check: @check).result_email.deliver_later
   end
 
   private

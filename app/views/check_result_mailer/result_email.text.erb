@@ -1,0 +1,8 @@
+<%= t('.greeting', username: @user.email) %>
+===============================================
+
+<% if @check.passed? %>
+<%= t('.success') %>
+<% else @check.passed? %>
+<%= t('.error', offenses_count: @check.linter_check_result['offenses_count']) %>
+<% end  %>

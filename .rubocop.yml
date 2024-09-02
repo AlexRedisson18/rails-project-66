@@ -12,6 +12,8 @@ AllCops:
     - "node_modules/**/*"
     # - "tmp/repositories/**/bin/**"
     # - "tmp/repositories/**/db/**/*.rb"
+    # - "tmp/repositories/vendor/**/*"
+    # - "tmp/repositories/node_modules/**/*"
   NewCops: enable
   TargetRailsVersion: 7
   TargetRubyVersion: 3.1.2

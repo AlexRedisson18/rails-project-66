@@ -1,4 +1,10 @@
 ru:
+  check_result_mailer:
+    result_email:
+      greeting: 'Добрый день, %{username}!'
+      subject: 'Результат проверки репозитория: %{repository_name}'
+      success: Проверка прошла успешно, ошибок или замечаний не обнаружено!
+      error: 'Репозиторий не прошел проверку, количество замечаний: %{offenses_count}'
   activerecord:
     attributes:
       repository/check:
