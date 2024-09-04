@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'slim_lint'
 gem 'slim-rails'
 gem 'sprockets-rails'
+gem 'stackprof'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]

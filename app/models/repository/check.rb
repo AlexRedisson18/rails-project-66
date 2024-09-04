@@ -10,7 +10,7 @@ class Repository::Check < ApplicationRecord
     state :check_running, :finished, :failed
 
     event :run_check do
-      transitions from: %i[created finished failed], to: :check_running
+      transitions from: :created, to: :check_running
     end
 
     event :mark_as_finished do
@@ -18,7 +18,7 @@ class Repository::Check < ApplicationRecord
     end
 
     event :mark_as_failed do
-      transitions to: :failed
+      transitions from: :check_running, to: :failed
     end
   end
 end

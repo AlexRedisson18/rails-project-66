@@ -25,13 +25,19 @@ module Web
 
     def find_or_initialize_user(user_data)
       email = user_data.dig(:info, :email).downcase
+      user = User.find_or_initialize_by(email:)
+      assign_user_attributes(user, user_data)
+    end
+
+    def assign_user_attributes(user, user_data)
       nickname = user_data.dig(:info, :nickname)
       token = user_data.dig(:credentials, :token)
+      provider = user_data[:provider]
+      uid = user_data[:uid]
 
-      user = User.find_or_initialize_by(email:)
-      user.nickname = nickname
-      user.token = token
+      attributes = { nickname:, token:, provider:, uid: }
 
+      user.assign_attributes(attributes)
       user
     end
   end

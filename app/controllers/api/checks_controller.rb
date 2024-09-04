@@ -2,7 +2,7 @@
 
 module Api
   class ChecksController < Api::ApplicationController
-    protect_from_forgery with: :null_session
+    skip_before_action :verify_authenticity_token
 
     def create
       repository = Repository.find_by(github_id: params['repository']['id'])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_23_075339) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_070021) do
   create_table "repositories", force: :cascade do |t|
     t.string "name"
     t.integer "github_id", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_23_075339) do
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
   end
 
   add_foreign_key "repositories", "users"
