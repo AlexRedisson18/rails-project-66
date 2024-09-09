@@ -32,6 +32,6 @@ hr
         tr
           td = link_to(check.id, repository_check_path(@repository, check))
           td = check.aasm.human_state
-          td = check.commit_id
+          td = github_commit_link(check)
           td = check.passed?
           td = l(check.created_at)
